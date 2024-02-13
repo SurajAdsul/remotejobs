@@ -28,6 +28,7 @@ const useDashboard = () => {
             const result = await response.json();
             setResults(result.jobs);
         } catch (err) {
+            // @ts-ignore
             setErr(err.message);
         } finally {
             setIsLoading(false);
