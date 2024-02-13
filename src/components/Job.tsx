@@ -8,7 +8,6 @@ type Props = {
 const Jobs = ({
                   position,
                   company,
-                  company_logo,
                   location,
                   salary,
               }: Props) => {
@@ -16,7 +15,7 @@ const Jobs = ({
         <div className="grid grid-cols-3 gap-4 items-center bg-white rounded-xl mx-4 py-4 px-8 my-4">
             <div className="flex items-center space-x-6 ">
                 <img
-                    src={company_logo}
+                    src={`https://ui-avatars.com/api/?bold=true&font-size=0.33&background=random&name=${company}`}
                     className="rounded-3xl w-16 h-16"
                 />
                 <div>
