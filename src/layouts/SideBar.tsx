@@ -1,7 +1,7 @@
 const SideBar = () => {
     return (
-        <div className="col-span-2 bg-blue-300 h-full top-0 left-0 z-40 transition-transform -translate-x-full sm:translate-x-0">
-            <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50">
+        <div className="col-span-2 h-full top-0 left-0 z-40 transition-transform -translate-x-full sm:translate-x-0">
+            <div className="h-full px-3 py-4 overflow-y-auto">
                 <ul className="space-y-2 font-medium">
                     <li>
                         <a href="#"

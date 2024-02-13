@@ -7,7 +7,7 @@ type Props = {
     children: React.ReactNode;
 }
 const Layout = ({children}: Props) => (
-    <div className="grid grid-cols-12 w-full h-screen">
+    <div className="grid grid-cols-12 w-full h-screen font-poppins">
         <SideBar/>
         <Content children={children}/>
         <Aside/>
