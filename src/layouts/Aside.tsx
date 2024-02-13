@@ -1,6 +1,6 @@
 const Aside = () => {
     return (
-        <div className="col-span-12 md:col-span-2">Aside</div>
+        <div className="bg-[#FBF9F1] col-span-12 md:col-span-3">Aside</div>
     )
 }
 

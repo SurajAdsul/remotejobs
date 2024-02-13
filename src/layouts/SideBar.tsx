@@ -1,7 +1,8 @@
 const SideBar = () => {
     return (
-        <div className="col-span-2 h-full top-0 left-0 z-40 transition-transform -translate-x-full sm:translate-x-0">
-            <div className="h-full px-3 py-4 overflow-y-auto">
+        <div className="bg-[#FEFBF6] col-span-2 h-full top-0 left-0 z-40 transition-transform -translate-x-full sm:translate-x-0">
+            <div className="h-full px-20 py-4 overflow-y-auto">
+                <div className="flex justify-center font-lobster text-6xl font-extrabold opacity-80 my-20">W</div>
                 <ul className="space-y-2 font-medium">
                     <li>
                         <a href="#"
