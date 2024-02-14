@@ -1,17 +1,19 @@
 import React from "react";
 import SideBar from "./SideBar.tsx";
-import Aside from "./Aside.tsx";
 import Content from "./Content.tsx";
+import NavBar from "./NavBar.tsx";
 
 type Props = {
     children: React.ReactNode;
 }
 const Layout = ({children}: Props) => (
-    <div className="grid grid-cols-12 w-full h-screen font-poppins">
-        <SideBar/>
-        <Content children={children}/>
-        <Aside/>
-    </div>
+    <>
+        <NavBar/>
+        <div className="flex min-h-screen font-roboto">
+            <SideBar/>
+            <Content children={children}/>
+        </div>
+    </>
 );
 
 export default Layout;

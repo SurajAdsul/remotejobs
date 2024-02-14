@@ -1,6 +1,6 @@
 import './App.css'
-import {Route, HashRouter as Router, Routes} from "react-router-dom";
-import Dashboard from "./pages/Dashboard.tsx";
+import {HashRouter as Router, Route, Routes} from "react-router-dom";
+import Home from "./pages/Home.tsx";
 
 function NotFound() {
     return (
@@ -13,7 +13,7 @@ function App() {
     return (
         <Router basename="/">
             <Routes>
-                <Route path="/" element={<Dashboard />} />
+                <Route path="/" element={<Home />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </Router>

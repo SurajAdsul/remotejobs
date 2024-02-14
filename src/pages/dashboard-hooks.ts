@@ -5,9 +5,9 @@ const useDashboard = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [err, setErr] = useState("");
 
-    useEffect(()=>{
+    useEffect(() => {
         handleClick();
-    },[])
+    }, [])
     const handleClick = async () => {
         setIsLoading(true);
         try {
@@ -35,11 +35,19 @@ const useDashboard = () => {
         }
     };
 
+    const [job, setJob] = useState('');
+    const onRowClick = (description: string) => {
+        setJob(description);
+    }
+
     return {
         handleClick,
         results,
         isLoading,
         err,
+        onRowClick,
+        setJob,
+        job,
     }
 }
 export default useDashboard;

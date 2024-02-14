@@ -1,18 +1,21 @@
+type onRowClick = (arg1: string) => void;
 type Props = {
     position: string;
     company: string;
     company_logo: string;
     location: string;
     salary: string;
+    onRowClick: onRowClick;
 }
 const Jobs = ({
                   position,
                   company,
                   location,
                   salary,
+                  onRowClick,
               }: Props) => {
     return (
-        <div className="grid grid-cols-3 gap-4 items-center bg-white rounded-xl mx-4 py-4 px-8 my-4 cursor-pointer hover:border-blue-700 hover:border-[3px]">
+        <div onClick={() => onRowClick(company)} className="grid grid-cols-3 gap-4 items-center bg-white rounded-xl mx-4 py-4 px-8 my-4 cursor-pointer hover:border-blue-700 hover:border-[3px]">
             <div className="flex items-center space-x-6 ">
                 <img
                     src={`https://ui-avatars.com/api/?bold=true&font-size=0.33&background=random&name=${company}`}
