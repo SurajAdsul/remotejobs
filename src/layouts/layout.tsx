@@ -8,8 +8,8 @@ type Props = {
 }
 const Layout = ({children}: Props) => (
     <>
+        <div className="flex min-h-screen font-roboto bg-white">
         <NavBar/>
-        <div className="flex min-h-screen font-roboto">
             <SideBar/>
             <Content children={children}/>
         </div>

@@ -5,7 +5,7 @@ type Props = {
 };
 const Content = ({children}: Props) => {
     return (
-        <main className="mt-16 flex-1">{children}</main>
+        <main className="z-10 mt-16 flex-1">{children}</main>
     )
 }
 

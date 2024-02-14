@@ -35,19 +35,18 @@ const useDashboard = () => {
         }
     };
 
-    const [job, setJob] = useState('');
-    const onRowClick = (description: string) => {
-        setJob(description);
-    }
+    const isJobOpen = (d1:Date) => {
+        const date1 = new Date(d1).getTime();
+        const date2 = new Date().getTime() - (30 * 24 * 60 * 60 * 1000);
+        return date1 > date2;
+    };
 
     return {
         handleClick,
         results,
         isLoading,
         err,
-        onRowClick,
-        setJob,
-        job,
+        isJobOpen
     }
 }
 export default useDashboard;
