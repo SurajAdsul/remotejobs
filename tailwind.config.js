@@ -12,7 +12,7 @@ export default {
                 roboto: ["Roboto", "sans-serif"],
             },
             backgroundImage: {
-                'hero': "url('../src/assets/cover.jpg')",
+                'logo': "url('../src/assets/logo.png')",
             },
         },
     },
