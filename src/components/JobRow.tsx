@@ -18,11 +18,11 @@ const JobRow = ({
             <tr className="focus:outline-none h-16 border border-gray-100 rounded text-gray-800 text-base">
                 <th scope="row"
                     className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap">
-                    <img className="w-10 h-10 rounded-full"
+                    <img className="w-10 h-10 rounded-lg"
                          src={`https://ui-avatars.com/api/?bold=true&font-size=0.33&background=random&name=${company}`}
                          alt="Jese image"/>
                     <div className="ps-3">
-                        <div className="text-base font-semibold">{position}</div>
+                        <div className="text-base font-medium">{position}</div>
                     </div>
                 </th>
                 <td className="px-6 py-4">

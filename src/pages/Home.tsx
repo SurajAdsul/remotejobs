@@ -12,23 +12,22 @@ const Home = () => {
 
                     {/*============================================*/}
                     <div className=" overflow-x-auto sm:rounded-lg mt-20">
-                        <table className="w-full text-sm text-left rtl:text-right text-gray-500">
-                            <thead
-                                className="text-xs text-gray-400 tracking-wide">
+                        <table className="w-full text-sm text-left rtl:text-right text-gray-700">
+                            <thead>
                             <tr>
-                                <th scope="col" className="px-6 py-3">
+                                <th scope="col" className="px-6 py-3 text-sm text-gray-700 font-light tracking-wide">
                                     Job Title
                                 </th>
-                                <th scope="col" className="px-6 py-3">
+                                <th scope="col" className="px-6 py-3 text-sm text-gray-700 font-light tracking-wide">
                                     Company
                                 </th>
-                                <th scope="col" className="px-6 py-3">
+                                <th scope="col" className="px-6 py-3 text-sm text-gray-700 font-light tracking-wide">
                                     Status
                                 </th>
-                                <th scope="col" className="px-6 py-3">
+                                <th scope="col" className="px-6 py-3 text-sm text-gray-700 font-light tracking-wide">
                                     Location
                                 </th>
-                                <th scope="col" className="px-6 py-3">
+                                <th scope="col" className="px-6 py-3 text-sm text-gray-700 font-light tracking-wide">
                                     Salary
                                 </th>
                             </tr>
