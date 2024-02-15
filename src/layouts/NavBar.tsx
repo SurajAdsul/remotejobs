@@ -1,4 +1,3 @@
-import imgUrl from '../assets/logo.png'
 import Button from "../components/Button.tsx";
 import Search from "../components/Search.tsx";
 
@@ -9,9 +8,7 @@ const NavBar = () => {
             <div className="flex justify-between mx-10 items-center py-4">
                 <div className="text-3xl flex items-center space-x-2">
                     <div>
-                        {/*<img src="/remotejobs/src/assets/logo.png" className="w-8 h-8"/>*/}
-                        <img src={imgUrl} className="w-8 h-8" alt="Logo"/>
-                        <img src="../assets/logo.png" className="w-8 h-8" alt="Logo"/>
+                        <img src="logo.png" className="w-8 h-8" alt="Logo"/>
                     </div>
                     <div>
                         recruit
