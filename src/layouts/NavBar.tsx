@@ -11,6 +11,7 @@ const NavBar = () => {
                     <div>
                         {/*<img src="/remotejobs/src/assets/logo.png" className="w-8 h-8"/>*/}
                         <img src={imgUrl} className="w-8 h-8" alt="Logo"/>
+                        <img src="../assets/logo.png" className="w-8 h-8" alt="Logo"/>
                     </div>
                     <div>
                         recruit
