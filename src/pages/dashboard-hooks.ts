@@ -37,7 +37,7 @@ const useDashboard = () => {
 
     const isJobOpen = (d1:Date) => {
         const date1 = new Date(d1).getTime();
-        const date2 = new Date().getTime() - (30 * 24 * 60 * 60 * 1000);
+        const date2 = new Date().getTime() - (28 * 24 * 60 * 60 * 1000);
         return date1 > date2;
     };
 
