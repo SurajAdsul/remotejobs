@@ -21,9 +21,9 @@ const SideBar = () => {
     ];
 
     const JobTypes = [
-        "Full-time",
-        "Part-time",
-        "Contractor",
+        "Full Time",
+        "Freelance",
+        "Contract",
     ];
 
     const {setFilterTags} = useContext(JobContext) as JobContextType
@@ -97,11 +97,11 @@ const SideBar = () => {
                         Job Type
                     </div>
                     <div className=" my-4">
-                        {JobTypes.map((job) => {
+                        {JobTypes.map((jobType) => {
                             return <CheckBox
-                                key={job}
-                                label={job}
-                                handler={() => handleCheckboxChange('location', job)}
+                                key={jobType}
+                                label={jobType}
+                                handler={() => handleCheckboxChange('job_type', jobType.split(' ').join('_'))}
                             />
                         })}
                     </div>

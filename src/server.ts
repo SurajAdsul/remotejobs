@@ -25,9 +25,9 @@ export function makeServer({environment = 'development'}) {
             this.get("/api/jobs", (schema, request) => {
                 const category = String(request.queryParams?.['category'] || '');
                 const location = String(request.queryParams?.['location'] || '');
+                const jobType = String(request.queryParams?.['job_type'] || '');
                 if (category) {
                     const filter = category.split(',')
-                    console.log("category==", filter);
                     return schema.db.job.filter(({category}) => {
                         return filter.some(substring => category.toLowerCase().includes(substring))
                     });
@@ -35,9 +35,15 @@ export function makeServer({environment = 'development'}) {
 
                 if (location) {
                     const filter = location.split(',')
-                    console.log("location==", filter);
                     return schema.db.job.filter(({candidate_required_location}) => {
                         return filter.some(substring => candidate_required_location.toLowerCase().includes(substring))
+                    });
+                }
+
+                if (jobType) {
+                    const filter = jobType.split(',')
+                    return schema.db.job.filter(({job_type}) => {
+                        return filter.some(substring => job_type.toLowerCase().includes(substring))
                     });
                 }
 

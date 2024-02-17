@@ -10,17 +10,20 @@ export type JobContextType = {
     err: string;
     // ...
 }
+
 export interface FilterParams {
     category: string[];
     location: string[];
+    job_type: string[];
 }
+
 export const JobContext = createContext<JobContextType | null>(null);
 
 const JobContextProvider = ({children}) => {
     const [results, setResults] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [err, setErr] = useState("");
-    const [filterTags, setFilterTags] = useState<FilterParams>({category: [], location: []})
+    const [filterTags, setFilterTags] = useState<FilterParams>({category: [], location: [], job_type: []})
 
     useEffect(() => {
         handleClick();
