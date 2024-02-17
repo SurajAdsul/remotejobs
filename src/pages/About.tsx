@@ -2,13 +2,15 @@ import Layout from "../layouts/layout.tsx";
 import {useEffect, useState} from "react";
 
 const About = () => {
-    const [users, setUsers] = useState([])
+    const [jobs, setJobs] = useState([])
 
     useEffect(() => {
-        fetch("/api/users")
+        fetch("/api/jobs?filter[category]=software,marketing")
             .then((response) => response.json())
-            .then((json) => setUsers(json))
+            .then((json) => setJobs(json))
     }, [])
+
+    console.log("mirage====>",jobs );
 
     return (
         <Layout>
@@ -19,8 +21,8 @@ const About = () => {
             </div>
             <div className="mt-4">
                 <ul>
-                    {users.map(({id, name}) => (
-                        <li key={id}>{name}</li>
+                    {jobs.map(({id, title}) => (
+                        <li key={id}>{title}</li>
                     ))}
                 </ul>
             </div>

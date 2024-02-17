@@ -1,21 +1,23 @@
 import CheckBox from "../components/CheckBox.tsx";
-import {ChangeEvent, useContext} from "react";
-import {JobContext, JobContextType} from "../context/JobContext.tsx";
+import {useContext} from "react";
+import {FilterParams, JobContext, JobContextType} from "../context/JobContext.tsx";
 
 const SideBar = () => {
 
     const categories = [
         "Marketing",
-        "Engineering",
+        "Software",
         "Product",
         "Operations",
         "Sales",
     ];
 
     const Locations = [
-        "Pune, India",
-        "Newyork, USA",
-        "Hamburg, Germany",
+        "USA",
+        "Canada",
+        "India",
+        "Germany",
+        "Worldwide",
     ];
 
     const JobTypes = [
@@ -24,16 +26,37 @@ const SideBar = () => {
         "Contractor",
     ];
 
-    const {filterTags, setFilterTags} = useContext(JobContext) as JobContextType
-    const filterHandler = (event: ChangeEvent<HTMLInputElement>) => {
-        if (event.target.checked) {
-            setFilterTags([...filterTags, event.target.value])
-        } else {
-            setFilterTags(
-                filterTags.filter((filterTag) => filterTag !== event.target.value)
-            )
-        }
-    }
+    const {setFilterTags} = useContext(JobContext) as JobContextType
+    // const filterHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    //     if (event.target.checked) {
+    //         setFilterTags([...filterTags, event.target.value])
+    //     } else {
+    //         setFilterTags(
+    //             filterTags.filter((filterTag) => filterTag !== event.target.value)
+    //         )
+    //     }
+    // }
+
+    const handleCheckboxChange = (filterType: keyof FilterParams, value: string) => {
+        // @ts-ignore
+        setFilterTags((prevParams) => {
+            const updatedFilters = [...prevParams[filterType]];
+            const index = updatedFilters.indexOf(value);
+
+            if (index !== -1) {
+                // Remove if already selected
+                updatedFilters.splice(index, 1);
+            } else {
+                // Add if not selected
+                updatedFilters.push(value);
+            }
+
+            return {
+                ...prevParams,
+                [filterType]: updatedFilters,
+            };
+        });
+    };
 
     return (
         <aside className="sticky top-16 h-[calc(100vh-theme(spacing.16))] w-64 overflow-y-auto">
@@ -48,7 +71,7 @@ const SideBar = () => {
                             return <CheckBox
                                 label={category}
                                 key={category}
-                                handler={filterHandler}
+                                handler={() => handleCheckboxChange('category', category)}
                             />
                         })}
                     </div>
@@ -60,7 +83,11 @@ const SideBar = () => {
                     </div>
                     <div className=" my-4">
                         {Locations.map((location) => {
-                            return <CheckBox key={location} label={location} handler={filterHandler}/>
+                            return <CheckBox
+                                key={location}
+                                label={location}
+                                handler={() => handleCheckboxChange('location', location)}
+                            />
                         })}
                     </div>
                 </div>
@@ -71,7 +98,11 @@ const SideBar = () => {
                     </div>
                     <div className=" my-4">
                         {JobTypes.map((job) => {
-                            return <CheckBox key={job} label={job} handler={filterHandler}/>
+                            return <CheckBox
+                                key={job}
+                                label={job}
+                                handler={() => handleCheckboxChange('location', job)}
+                            />
                         })}
                     </div>
                 </div>

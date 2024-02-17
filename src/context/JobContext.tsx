@@ -1,13 +1,18 @@
-import {createContext, Dispatch, SetStateAction, useEffect, useState} from "react";
+import {createContext, Dispatch, useEffect, useState} from "react";
 
 export type JobContextType = {
     results: Array<never>;
     isLoading: boolean;
     handleClick: () => void;
     buildUrl: (filterTags: string[]) => void;
-    filterTags:string[];
-    setFilterTags: Dispatch<string[]>;
+    filterTags: FilterParams;
+    setFilterTags: Dispatch<FilterParams>;
+    err: string;
     // ...
+}
+export interface FilterParams {
+    category: string[];
+    location: string[];
 }
 export const JobContext = createContext<JobContextType | null>(null);
 
@@ -15,17 +20,21 @@ const JobContextProvider = ({children}) => {
     const [results, setResults] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [err, setErr] = useState("");
-    const [filterTags, setFilterTags] = useState<string[]>([])
+    const [filterTags, setFilterTags] = useState<FilterParams>({category: [], location: []})
 
     useEffect(() => {
         handleClick();
     }, [filterTags])
 
     const buildUrl = () => {
-        let url = "https://remotive.com/api/remote-jobs?limit=30";
+        // const url = "https://remotive.com/api/remote-jobs?limit=30";
+        let url = "/api/jobs";
 
-        if (filterTags.length) {
-            url += "&category=" + filterTags.shift();
+        // @ts-ignore
+        const queryParams = new URLSearchParams(filterTags).toString().toLowerCase();
+        console.log(queryParams);
+        if (queryParams) {
+            url += `?${queryParams}`;
         }
 
         return url
@@ -49,7 +58,7 @@ const JobContextProvider = ({children}) => {
             }
 
             const result = await response.json();
-            setResults(result.jobs);
+            setResults(result);
         } catch (err) {
             // @ts-ignore
             setErr(err);
@@ -59,7 +68,7 @@ const JobContextProvider = ({children}) => {
     };
 
     return (
-        <JobContext.Provider value={{results, isLoading, handleClick, buildUrl, filterTags, setFilterTags}}>
+        <JobContext.Provider value={{results, isLoading, err, handleClick, buildUrl, filterTags, setFilterTags}}>
             {children}
         </JobContext.Provider>
     );

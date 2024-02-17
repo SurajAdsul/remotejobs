@@ -1,12 +1,9 @@
 import Layout from "../layouts/layout.tsx";
 import useDashboard from "./dashboard-hooks.ts";
 import JobRow from "../components/JobRow.tsx";
-import {useEffect} from "react";
 
 const Home = () => {
     const {results, isJobOpen} = useDashboard();
-    useEffect(() => {},[results])
-console.log("results===>", results);
     return (
         <Layout>
             <div className="col-span-7">
