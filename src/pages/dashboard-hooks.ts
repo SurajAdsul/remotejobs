@@ -1,41 +1,10 @@
-import {useEffect, useState} from "react";
+import {useContext} from "react";
+import {JobContext, JobContextType} from "../context/JobContext.tsx";
 
 const useDashboard = () => {
-    const [results, setResults] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const [err, setErr] = useState("");
+    const{results, isLoading, handleClick}  = useContext(JobContext) as JobContextType
 
-    useEffect(() => {
-        handleClick();
-    }, [])
-    const handleClick = async () => {
-        setIsLoading(true);
-        try {
-            const response = await fetch(
-                `https://remotive.com/api/remote-jobs?limit=30`,
-                {
-                    method: "GET",
-                    headers: {
-                        Accept: "application/json",
-                    },
-                },
-            );
-
-            if (!response.ok) {
-                throw new Error(`Error! status: ${response.status}`);
-            }
-
-            const result = await response.json();
-            setResults(result.jobs);
-        } catch (err) {
-            // @ts-ignore
-            setErr(err.message);
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
-    const isJobOpen = (d1:Date) => {
+    const isJobOpen = (d1: Date) => {
         const date1 = new Date(d1).getTime();
         const date2 = new Date().getTime() - (28 * 24 * 60 * 60 * 1000);
         return date1 > date2;
@@ -45,8 +14,8 @@ const useDashboard = () => {
         handleClick,
         results,
         isLoading,
-        err,
-        isJobOpen
+        // err,
+        isJobOpen,
     }
 }
 export default useDashboard;

@@ -1,4 +1,6 @@
 import CheckBox from "../components/CheckBox.tsx";
+import {ChangeEvent, useContext} from "react";
+import {JobContext, JobContextType} from "../context/JobContext.tsx";
 
 const SideBar = () => {
 
@@ -22,6 +24,17 @@ const SideBar = () => {
         "Contractor",
     ];
 
+    const {filterTags, setFilterTags} = useContext(JobContext) as JobContextType
+    const filterHandler = (event: ChangeEvent<HTMLInputElement>) => {
+        if (event.target.checked) {
+            setFilterTags([...filterTags, event.target.value])
+        } else {
+            setFilterTags(
+                filterTags.filter((filterTag) => filterTag !== event.target.value)
+            )
+        }
+    }
+
     return (
         <aside className="sticky top-16 h-[calc(100vh-theme(spacing.16))] w-64 overflow-y-auto">
             <div className="ml-6 my-14 space-y-10">
@@ -32,7 +45,11 @@ const SideBar = () => {
                     </div>
                     <div className=" my-4">
                         {categories.map((category) => {
-                            return <CheckBox label={category}/>
+                            return <CheckBox
+                                label={category}
+                                key={category}
+                                handler={filterHandler}
+                            />
                         })}
                     </div>
                 </div>
@@ -43,7 +60,7 @@ const SideBar = () => {
                     </div>
                     <div className=" my-4">
                         {Locations.map((location) => {
-                            return <CheckBox label={location}/>
+                            return <CheckBox key={location} label={location} handler={filterHandler}/>
                         })}
                     </div>
                 </div>
@@ -54,7 +71,7 @@ const SideBar = () => {
                     </div>
                     <div className=" my-4">
                         {JobTypes.map((job) => {
-                            return <CheckBox label={job}/>
+                            return <CheckBox key={job} label={job} handler={filterHandler}/>
                         })}
                     </div>
                 </div>
