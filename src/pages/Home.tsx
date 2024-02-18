@@ -10,7 +10,7 @@ const Home = () => {
                 <div className="container">
 
                     {/*============================================*/}
-                    <div className=" overflow-x-auto sm:rounded-lg mt-20">
+                    <div className="overflow-x-auto sm:rounded-lg mt-20">
                         <table className="w-full text-sm text-left rtl:text-right text-gray-700">
                             <thead>
                             <tr>

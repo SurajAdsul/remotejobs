@@ -9,7 +9,7 @@ type Props = {
 const Layout = ({children}: Props) => (
     <>
         <div className="flex min-h-screen font-roboto bg-white">
-        <NavBar/>
+            <NavBar/>
             <SideBar/>
             <Content children={children}/>
         </div>

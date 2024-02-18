@@ -27,16 +27,6 @@ const SideBar = () => {
     ];
 
     const {setFilterTags} = useContext(JobContext) as JobContextType
-    // const filterHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    //     if (event.target.checked) {
-    //         setFilterTags([...filterTags, event.target.value])
-    //     } else {
-    //         setFilterTags(
-    //             filterTags.filter((filterTag) => filterTag !== event.target.value)
-    //         )
-    //     }
-    // }
-
     const handleCheckboxChange = (filterType: keyof FilterParams, value: string) => {
         // @ts-ignore
         setFilterTags((prevParams) => {
@@ -59,7 +49,7 @@ const SideBar = () => {
     };
 
     return (
-        <aside className="sticky top-16 h-[calc(100vh-theme(spacing.16))] w-64 overflow-y-auto">
+        <aside className="hidden md:block sticky top-16 h-[calc(100vh-theme(spacing.16))] md:w-64 overflow-y-auto">
             <div className="ml-6 my-14 space-y-10">
                 <div className="text-3xl">Jobs</div>
                 <div>
