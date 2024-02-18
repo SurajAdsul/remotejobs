@@ -15,7 +15,7 @@ purposes. I have used the latest technologies for this project.
 
 ## 👩🏽‍🍳 The Process
 
-I started this project because I wanted to learn more about React V18, React Router V6, React hooks and the context API. 
+I started this project because I wanted to learn more about React V18, React Router V6, React hooks, and the context API. 
 Initially, I thought of using the NextJS because that is what is now recommended by React documentation.
 But still, many people use the setup react boilerplate so decided to use that for this project. 
 I did set up this project using the Vite boilerplate.
@@ -24,7 +24,7 @@ I have installed TailwindCSS because I love using that and resonates with my dev
 Initially, I tried to use the [Remotive Jobs API](https://remotive.com/api/remote-jobs?limit=40) but it does not allow us to search by different parameters.
 It has a lot of limitations. Also that API was not allowing me to fetch the images because of the strict [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policy. 
 So I wanted to use the images but creating those images via some image manipulation was possible but out of scope for this hobby project.
-After some research, I found the [Picsum API]https://picsum.photos/ which created the images based on given text and dimensions with specified background colors.
+After some research, I found the [Picsum API](https://picsum.photos) which created the images based on given text and dimensions with specified background colors.
 This worked perfectly for my project and I have used that to fetch images based on company name.
 
 Like I said the third-party API had some limitations and I wanted to the some filtering on the data and here [MirajJS](https://miragejs.com) comes to the rescue.
