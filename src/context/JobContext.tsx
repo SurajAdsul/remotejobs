@@ -8,7 +8,6 @@ export type JobContextType = {
     filterTags: FilterParams;
     setFilterTags: Dispatch<FilterParams>;
     err: string;
-    // ...
 }
 
 export interface FilterParams {

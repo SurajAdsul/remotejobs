@@ -1,9 +1,11 @@
 import Layout from "../layouts/layout.tsx";
 import useDashboard from "./dashboard-hooks.ts";
 import JobRow from "../components/JobRow.tsx";
+import Loader from "../components/Loader.tsx";
+import Empty from "../components/Empty.tsx";
 
 const Home = () => {
-    const {results, isJobOpen} = useDashboard();
+    const {results, isJobOpen, isLoading} = useDashboard();
     return (
         <Layout>
             <div className="col-span-7">
@@ -11,6 +13,7 @@ const Home = () => {
 
                     {/*============================================*/}
                     <div className="overflow-x-auto sm:rounded-lg mt-20">
+
                         <table className="w-full text-sm text-left rtl:text-right text-gray-700">
                             <thead>
                             <tr>
@@ -32,6 +35,7 @@ const Home = () => {
                             </tr>
                             </thead>
                             <tbody>
+
                             {results.map(({
                                               title,
                                               company_name,
@@ -55,6 +59,8 @@ const Home = () => {
 
                             </tbody>
                         </table>
+                        {isLoading && <Loader/>}
+                        {!results.length && !isLoading && <Empty message="Unable to find the job" />}
                     </div>
                     {/*============================================*/}
                 </div>
