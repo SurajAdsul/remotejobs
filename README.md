@@ -4,5 +4,6 @@
 Add loader
 Add empty state
 Add error state
+Make global search work
 Fix typescript errors
 Make it responsive
