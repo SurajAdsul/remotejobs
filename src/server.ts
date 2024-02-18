@@ -26,28 +26,29 @@ export function makeServer({environment = 'development'}) {
                 const category = String(request.queryParams?.['category'] || '');
                 const location = String(request.queryParams?.['location'] || '');
                 const jobType = String(request.queryParams?.['job_type'] || '');
+                let jobs: { category: string, candidate_required_location: string, job_type: string }[] = schema.db.job;
                 if (category) {
                     const filter = category.split(',')
-                    return schema.db.job.filter(({category}) => {
+                    jobs = jobs.filter(({category}) => {
                         return filter.some(substring => category.toLowerCase().includes(substring))
                     });
                 }
 
                 if (location) {
                     const filter = location.split(',')
-                    return schema.db.job.filter(({candidate_required_location}) => {
+                    jobs = jobs.filter(({candidate_required_location}) => {
                         return filter.some(substring => candidate_required_location.toLowerCase().includes(substring))
                     });
                 }
 
                 if (jobType) {
                     const filter = jobType.split(',')
-                    return schema.db.job.filter(({job_type}) => {
+                    jobs = jobs.filter(({job_type}) => {
                         return filter.some(substring => job_type.toLowerCase().includes(substring))
                     });
                 }
 
-                return schema.db.job
+                return jobs;
             })
             this.passthrough("https://remotive.com/**")
         },
