@@ -8,7 +8,6 @@
     "allowSyntheticDefaultImports": true,
     "allowJs": true,
     "noImplicitAny": false,
-    "noExplicitAny": false,
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
