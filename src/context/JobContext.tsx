@@ -7,6 +7,7 @@ export type JobContextType = {
     buildUrl: (filterTags: string[]) => void;
     filterTags: FilterParams;
     setFilterTags: Dispatch<FilterParams>;
+    setSearch: Dispatch<string>;
     err: string;
 }
 
@@ -20,17 +21,23 @@ export const JobContext = createContext<JobContextType | null>(null);
 
 const JobContextProvider = ({children}) => {
     const [results, setResults] = useState([]);
+    const [search, setSearch] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [err, setErr] = useState("");
     const [filterTags, setFilterTags] = useState<FilterParams>({category: [], location: [], job_type: []})
 
     useEffect(() => {
         handleClick();
-    }, [filterTags])
+    }, [filterTags, search])
 
     const buildUrl = () => {
         // const url = "https://remotive.com/api/remote-jobs?limit=30";
         let url = "/api/jobs";
+        if (search) {
+            url += `/search?search=${search}`;
+        console.log(url);
+            return url
+        }
 
         // @ts-ignore
         const queryParams = new URLSearchParams(filterTags).toString().toLowerCase();
@@ -70,7 +77,8 @@ const JobContextProvider = ({children}) => {
     };
 
     return (
-        <JobContext.Provider value={{results, isLoading, err, handleClick, buildUrl, filterTags, setFilterTags}}>
+        <JobContext.Provider
+            value={{results, isLoading, err, handleClick, buildUrl, filterTags, setFilterTags, setSearch}}>
             {children}
         </JobContext.Provider>
     );

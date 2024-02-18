@@ -60,14 +60,12 @@ const Home = () => {
                             </tbody>
                         </table>
                         {isLoading && <Loader/>}
-                        {!results.length && !isLoading && <Empty message="Unable to find the job" />}
+                        {!results.length && !isLoading && <Empty message="Unable to find the job"/>}
                     </div>
                     {/*============================================*/}
                 </div>
             </div>
         </Layout>
-
-
     )
 
 }

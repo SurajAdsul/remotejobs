@@ -5,7 +5,7 @@ const About = () => {
     const [jobs, setJobs] = useState([])
 
     useEffect(() => {
-        fetch("/api/jobs?filter[category]=software,marketing")
+        fetch("/api/jobs/search?search=usa")
             .then((response) => response.json())
             .then((json) => setJobs(json))
     }, [])

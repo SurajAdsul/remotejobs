@@ -1,9 +1,13 @@
 ** https://remotive.com/api/remote-jobs?limit=40
 
+
+
+
+
+
+
 ** TODO:
-Add loader
-Add empty state
-Add error state
-Make global search work
-Fix typescript errors
-Make it responsive
+1. [ ] Add error state
+2. [ ] Make global search work
+3. [ ] Fix typescript errors
+4. [ ] Make it responsive

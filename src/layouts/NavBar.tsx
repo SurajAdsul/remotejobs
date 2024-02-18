@@ -1,8 +1,11 @@
 import Search from "../components/Search.tsx";
 import NavList from "../components/NavList.tsx";
+import {useContext} from "react";
+import {JobContext, JobContextType} from "../context/JobContext.tsx";
 
 const NavBar = () => {
     const imgUrl = new URL('../assets/logo.png', import.meta.url).href
+    const {setSearch} = useContext(JobContext) as JobContextType
     return (
         <nav
             className="fixed md:bottom-[calc(100vh-theme(spacing.20))] left-0 right-0 top-0 z-20 bg-white border-b-[1px] border-gray-200">
@@ -31,7 +34,7 @@ const NavBar = () => {
                 <NavList/>
                 <div className="hidden md:flex space-x-6 md">
                     <div>
-                        <Search/>
+                        <Search setSearch={setSearch}/>
                     </div>
                 </div>
 
